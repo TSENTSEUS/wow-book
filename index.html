@@ -75,21 +75,25 @@
 
         var bookOptions = {
             height   : $(window).height()
-            ,width    : $(window).width()
-
+            ,width    : $(window).width() < 500 ? $(window).width() * 2 : $(window).width()
+            ,maxWidth: $(window).width() < 500 ? 600 : null
+            ,maxHeight: $(window).width() < 500 ? 590 : null
             ,centeredWhenClosed : true
             ,hardcovers : true
             ,toolbar : "lastLeft, left,currentPage, right, lastRight, zoomin, zoomout, flipsound, fullscreen, thumbnails"
             ,responsiveHandleWidth : 50
-
             ,container: window
             ,containerPadding: "20px"
             // ,pdf: "test_book.pdf"
             // ,pdfFind: true
             ,thumbnailsPosition: "bottom"
             ,pageNumbers: false
-            ,scaleToFit: "#book"
-
+            ,scaleToFit: $(window).width() < 500 && window
+            ,responsiveSinglePage: function( book ){
+                // return true (and activate single page mode)
+                // if the container width is less than 500
+                return $(window).width() < 500;
+            }
         };
 
         $('#book').wowBook( bookOptions );
