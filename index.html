@@ -88,12 +88,8 @@
             // ,pdfFind: true
             ,thumbnailsPosition: "bottom"
             ,pageNumbers: false
-            , scaleToFit : "#book",
-            responsiveSinglePage: function( book ){
-                // return true (and activate single page mode)
-                // if the container width is less than 500
-                return $("#book").width() < 500;
-            }
+            ,scaleToFit: "#book"
+
         };
 
         $('#book').wowBook( bookOptions );
